@@ -1,12 +1,11 @@
 use std::path::Path;
-use std::rc::Rc;
 
-use Result;
 use driver::Driver;
+use {Result, Safe};
 
 /// A database.
 pub struct Database<T: Driver> {
-    driver: Rc<T>,
+    driver: Safe<T>,
 }
 
 impl<T: Driver> Database<T> {
@@ -14,11 +13,11 @@ impl<T: Driver> Database<T> {
     ///
     /// If the database does not exist, it will be created.
     pub fn open<P: AsRef<Path>>(path: P) -> Result<Self> {
-        Ok(Database { driver: Rc::new(try!(T::connect(path))) })
+        Ok(Database { driver: Safe::new(try!(T::connect(path))) })
     }
 }
 
 #[inline]
-pub fn driver<T: Driver>(database: &Database<T>) -> Rc<T> {
+pub fn driver<T: Driver>(database: &Database<T>) -> Safe<T> {
     database.driver.clone()
 }

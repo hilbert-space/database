@@ -1,17 +1,14 @@
-use std::rc::Rc;
-
-use Result;
 use column::Column;
 use database::{self, Database};
 use driver::Driver;
 use operation::{CreateTable, Operation};
+use {Result, Safe};
 
 /// A table.
-#[derive(Clone, Debug)]
 pub struct Table<T: Driver> {
     name: String,
     columns: Vec<Column>,
-    driver: Rc<T>,
+    driver: Safe<T>,
 }
 
 impl<T: Driver> Table<T> {
