@@ -1,16 +1,15 @@
 use std::default::Default;
 
 use Result;
+use column::ColumnKind;
 use operation::{Buffer, Operation};
 
-/// A column builder.
 #[derive(Clone, Debug, Default)]
 pub struct CreateColumn {
     name: Option<String>,
-    kind: Option<String>,
+    kind: Option<ColumnKind>,
 }
 
-/// A table builder.
 #[derive(Clone, Debug, Default)]
 pub struct CreateTable {
     columns: Option<Vec<CreateColumn>>,
@@ -19,32 +18,33 @@ pub struct CreateTable {
 }
 
 impl CreateColumn {
-    /// Assign a name.
     pub fn name(&mut self, value: &str) -> &mut Self {
         self.name = Some(value.to_string());
         self
     }
 
-    /// Assign a type.
-    pub fn kind(&mut self, value: &str) -> &mut Self {
-        self.kind = Some(value.to_string());
+    pub fn kind(&mut self, value: ColumnKind) -> &mut Self {
+        self.kind = Some(value);
         self
     }
 }
 
 impl Operation for CreateColumn {
     fn compile(mut self) -> Result<String> {
-        Ok(format!("`{}` {}", take!(self, name), take!(self, kind)))
+        let kind = match take!(self, kind) {
+            ColumnKind::Float => "REAL",
+            ColumnKind::Integer => "INTEGER",
+            ColumnKind::Text => "TEXT",
+        };
+        Ok(format!("`{}` {}", take!(self, name), kind))
     }
 }
 
 impl CreateTable {
-    /// Create a builder.
     pub fn new() -> CreateTable {
         CreateTable::default()
     }
 
-    /// Add a column.
     pub fn column<F>(&mut self, mut build: F) -> &mut Self where F: FnMut(&mut CreateColumn) {
         let mut column = CreateColumn::default();
         build(&mut column);
@@ -54,13 +54,11 @@ impl CreateTable {
         self
     }
 
-    /// Mark as applicable only in case the table does not exist yet.
     pub fn if_not_exists(&mut self) -> &mut Self {
         self.if_not_exists = Some(());
         self
     }
 
-    /// Assign a name.
     pub fn name(&mut self, value: &str) -> &mut Self {
         self.name = Some(value.to_string());
         self
@@ -90,6 +88,7 @@ impl Operation for CreateTable {
 
 #[cfg(test)]
 mod tests {
+    use column::ColumnKind;
     use operation::{CreateTable, Operation};
 
     #[test]
@@ -100,14 +99,14 @@ mod tests {
                  .if_not_exists()
                  .column(|column| {
                      column.name("bar");
-                     column.kind("BAR");
+                     column.kind(ColumnKind::Float);
                  })
                  .column(|column| {
                      column.name("baz");
-                     column.kind("BAZ");
+                     column.kind(ColumnKind::Text);
                  });
 
         assert_eq!(&operation.compile().unwrap(),
-                   "CREATE TABLE IF NOT EXISTS `foo` (`bar` BAR, `baz` BAZ)");
+                   "CREATE TABLE IF NOT EXISTS `foo` (`bar` REAL, `baz` TEXT)");
     }
 }

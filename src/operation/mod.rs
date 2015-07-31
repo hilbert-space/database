@@ -1,10 +1,6 @@
-//! Operations.
-
 use Result;
 
-/// An operation.
 pub trait Operation {
-    /// Compile to a query.
     fn compile(self) -> Result<String>;
 }
 

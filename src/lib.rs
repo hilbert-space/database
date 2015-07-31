@@ -44,4 +44,13 @@ impl error::Error for Error {
     }
 }
 
-pub mod operation;
+pub mod driver;
+
+mod column;
+mod database;
+mod operation;
+mod table;
+
+pub use column::{Column, ColumnKind};
+pub use database::Database;
+pub use table::Table;
