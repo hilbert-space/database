@@ -10,10 +10,21 @@ pub struct Column {
 /// A column type.
 #[derive(Clone, Copy, Debug)]
 pub enum ColumnKind {
-    /// Floating-point data.
+    /// The floating-point type.
     Float,
-    /// Integer data.
+    /// The integer type.
     Integer,
-    /// Textual data.
+    /// The textual type.
     Text,
+}
+
+/// A column value.
+#[derive(Clone, Debug)]
+pub enum ColumnValue {
+    /// A floating-point value.
+    Float(f64),
+    /// An integer value.
+    Integer(i64),
+    /// A textual value.
+    Text(String),
 }

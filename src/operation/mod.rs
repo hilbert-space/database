@@ -11,13 +11,13 @@ impl Buffer {
         Buffer(vec![])
     }
 
-    fn take(&mut self, chunk: String) -> &mut Self {
-        self.0.push(chunk);
+    fn copy(&mut self, chunk: &str) -> &mut Self {
+        self.0.push(chunk.to_string());
         self
     }
 
-    fn copy(&mut self, chunk: &str) -> &mut Self {
-        self.0.push(chunk.to_string());
+    fn take(&mut self, chunk: String) -> &mut Self {
+        self.0.push(chunk);
         self
     }
 
@@ -31,6 +31,11 @@ impl Buffer {
         }
         result
     }
+
+    #[inline]
+    fn len(&self) -> usize {
+        self.0.len()
+    }
 }
 
 macro_rules! take(
@@ -43,5 +48,7 @@ macro_rules! take(
 );
 
 mod create;
+mod insert;
 
 pub use self::create::{CreateColumn, CreateTable};
+pub use self::insert::Insert;

@@ -4,11 +4,16 @@ use std::ops::Deref;
 use std::rc::Rc;
 use std::{error, fmt, result};
 
+use driver::Driver;
+
 /// An error.
 pub struct Error(String);
 
 /// A result.
 pub type Result<T> = result::Result<T, Error>;
+
+#[doc(hidden)]
+pub struct Safe<T: Driver>(Rc<T>);
 
 macro_rules! raise(
     ($message:expr) => (
@@ -46,22 +51,6 @@ impl error::Error for Error {
     }
 }
 
-pub mod driver;
-
-mod column;
-mod database;
-mod operation;
-mod table;
-
-pub use column::{Column, ColumnKind};
-pub use database::Database;
-pub use table::Table;
-
-use driver::Driver;
-
-#[doc(hidden)]
-pub struct Safe<T: Driver>(Rc<T>);
-
 impl<T: Driver> Safe<T> {
     #[inline]
     fn new(driver: T) -> Safe<T> {
@@ -84,3 +73,16 @@ impl<T: Driver> Deref for Safe<T> {
         &*self.0
     }
 }
+
+pub mod driver;
+
+mod column;
+mod database;
+mod operation;
+mod table;
+mod writer;
+
+pub use column::{Column, ColumnKind, ColumnValue};
+pub use database::Database;
+pub use table::Table;
+pub use writer::Writer;
