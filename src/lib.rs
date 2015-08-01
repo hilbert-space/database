@@ -1,5 +1,8 @@
 //! A relational database.
 
+#[cfg(feature = "sqlite")]
+extern crate sqlite;
+
 use std::ops::Deref;
 use std::rc::Rc;
 use std::{error, fmt, result};

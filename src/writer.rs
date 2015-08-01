@@ -30,7 +30,6 @@ impl<T: Driver> Writer<T> {
 
     /// Write data.
     pub fn write(&mut self, values: &[ColumnValue]) -> Result<()> {
-        try!(self.statement.assign(values));
-        self.statement.execute()
+        self.statement.execute(values)
     }
 }

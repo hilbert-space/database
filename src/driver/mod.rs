@@ -22,9 +22,10 @@ pub trait Driver {
 
 /// A prepared statement.
 pub trait Statement {
-    /// Assign values to parameters.
-    fn assign(&mut self, &[ColumnValue]) -> Result<()>;
-
-    /// Execute the statement.
-    fn execute(&mut self) -> Result<()>;
+    /// Assign values to parameters and execute.
+    fn execute(&mut self, &[ColumnValue]) -> Result<()>;
 }
+
+pub mod sqlite;
+
+pub use self::sqlite::Driver as SQLite;

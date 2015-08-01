@@ -6,3 +6,10 @@ license = "MIT"
 repository = "https://github.com/hilbert-space/database"
 homepage = "https://github.com/hilbert-space/database"
 description = "Database."
+
+[features]
+default = ["sqlite"]
+
+[dependencies.sqlite]
+version = "*"
+optional = true
