@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Like","A `LIKE` expression."]],"trait":[["Expression","An expression."]]});

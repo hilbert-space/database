@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Driver","The SQLite driver."],["Prepared","An SQLite prepared statement."]]});

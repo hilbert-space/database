@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `sqlite3_sys` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, sqlite3_sys">
+
+    <title>sqlite3_sys - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'sqlite3_sys', ty: 'mod', relpath: '../'};</script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>sqlite3_sys</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/sqlite3_sys/lib.rs.html#1-95' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.sqlite3.html'
+                               title='sqlite3_sys::sqlite3'>sqlite3</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.sqlite3_stmt.html'
+                               title='sqlite3_sys::sqlite3_stmt'>sqlite3_stmt</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_ABORT.html'
+                               title='sqlite3_sys::SQLITE_ABORT'>SQLITE_ABORT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_ABORT_ROLLBACK.html'
+                               title='sqlite3_sys::SQLITE_ABORT_ROLLBACK'>SQLITE_ABORT_ROLLBACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_AUTH.html'
+                               title='sqlite3_sys::SQLITE_AUTH'>SQLITE_AUTH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_AUTH_USER.html'
+                               title='sqlite3_sys::SQLITE_AUTH_USER'>SQLITE_AUTH_USER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_BLOB.html'
+                               title='sqlite3_sys::SQLITE_BLOB'>SQLITE_BLOB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_BUSY.html'
+                               title='sqlite3_sys::SQLITE_BUSY'>SQLITE_BUSY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_BUSY_RECOVERY.html'
+                               title='sqlite3_sys::SQLITE_BUSY_RECOVERY'>SQLITE_BUSY_RECOVERY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_BUSY_SNAPSHOT.html'
+                               title='sqlite3_sys::SQLITE_BUSY_SNAPSHOT'>SQLITE_BUSY_SNAPSHOT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CANTOPEN.html'
+                               title='sqlite3_sys::SQLITE_CANTOPEN'>SQLITE_CANTOPEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CANTOPEN_CONVPATH.html'
+                               title='sqlite3_sys::SQLITE_CANTOPEN_CONVPATH'>SQLITE_CANTOPEN_CONVPATH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CANTOPEN_FULLPATH.html'
+                               title='sqlite3_sys::SQLITE_CANTOPEN_FULLPATH'>SQLITE_CANTOPEN_FULLPATH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CANTOPEN_ISDIR.html'
+                               title='sqlite3_sys::SQLITE_CANTOPEN_ISDIR'>SQLITE_CANTOPEN_ISDIR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CANTOPEN_NOTEMPDIR.html'
+                               title='sqlite3_sys::SQLITE_CANTOPEN_NOTEMPDIR'>SQLITE_CANTOPEN_NOTEMPDIR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT'>SQLITE_CONSTRAINT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_CHECK.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_CHECK'>SQLITE_CONSTRAINT_CHECK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_COMMITHOOK.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_COMMITHOOK'>SQLITE_CONSTRAINT_COMMITHOOK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_FOREIGNKEY.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_FOREIGNKEY'>SQLITE_CONSTRAINT_FOREIGNKEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_FUNCTION.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_FUNCTION'>SQLITE_CONSTRAINT_FUNCTION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_NOTNULL.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_NOTNULL'>SQLITE_CONSTRAINT_NOTNULL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_PRIMARYKEY.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_PRIMARYKEY'>SQLITE_CONSTRAINT_PRIMARYKEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_ROWID.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_ROWID'>SQLITE_CONSTRAINT_ROWID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_TRIGGER.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_TRIGGER'>SQLITE_CONSTRAINT_TRIGGER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_UNIQUE.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_UNIQUE'>SQLITE_CONSTRAINT_UNIQUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CONSTRAINT_VTAB.html'
+                               title='sqlite3_sys::SQLITE_CONSTRAINT_VTAB'>SQLITE_CONSTRAINT_VTAB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CORRUPT.html'
+                               title='sqlite3_sys::SQLITE_CORRUPT'>SQLITE_CORRUPT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_CORRUPT_VTAB.html'
+                               title='sqlite3_sys::SQLITE_CORRUPT_VTAB'>SQLITE_CORRUPT_VTAB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_DONE.html'
+                               title='sqlite3_sys::SQLITE_DONE'>SQLITE_DONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_EMPTY.html'
+                               title='sqlite3_sys::SQLITE_EMPTY'>SQLITE_EMPTY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_ERROR.html'
+                               title='sqlite3_sys::SQLITE_ERROR'>SQLITE_ERROR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_FLOAT.html'
+                               title='sqlite3_sys::SQLITE_FLOAT'>SQLITE_FLOAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_FORMAT.html'
+                               title='sqlite3_sys::SQLITE_FORMAT'>SQLITE_FORMAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_FULL.html'
+                               title='sqlite3_sys::SQLITE_FULL'>SQLITE_FULL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_INTEGER.html'
+                               title='sqlite3_sys::SQLITE_INTEGER'>SQLITE_INTEGER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_INTERNAL.html'
+                               title='sqlite3_sys::SQLITE_INTERNAL'>SQLITE_INTERNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_INTERRUPT.html'
+                               title='sqlite3_sys::SQLITE_INTERRUPT'>SQLITE_INTERRUPT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR.html'
+                               title='sqlite3_sys::SQLITE_IOERR'>SQLITE_IOERR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_ACCESS.html'
+                               title='sqlite3_sys::SQLITE_IOERR_ACCESS'>SQLITE_IOERR_ACCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_BLOCKED.html'
+                               title='sqlite3_sys::SQLITE_IOERR_BLOCKED'>SQLITE_IOERR_BLOCKED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_CHECKRESERVEDLOCK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_CHECKRESERVEDLOCK'>SQLITE_IOERR_CHECKRESERVEDLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_CLOSE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_CLOSE'>SQLITE_IOERR_CLOSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_CONVPATH.html'
+                               title='sqlite3_sys::SQLITE_IOERR_CONVPATH'>SQLITE_IOERR_CONVPATH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_DELETE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_DELETE'>SQLITE_IOERR_DELETE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_DELETE_NOENT.html'
+                               title='sqlite3_sys::SQLITE_IOERR_DELETE_NOENT'>SQLITE_IOERR_DELETE_NOENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_DIR_CLOSE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_DIR_CLOSE'>SQLITE_IOERR_DIR_CLOSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_DIR_FSYNC.html'
+                               title='sqlite3_sys::SQLITE_IOERR_DIR_FSYNC'>SQLITE_IOERR_DIR_FSYNC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_FSTAT.html'
+                               title='sqlite3_sys::SQLITE_IOERR_FSTAT'>SQLITE_IOERR_FSTAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_FSYNC.html'
+                               title='sqlite3_sys::SQLITE_IOERR_FSYNC'>SQLITE_IOERR_FSYNC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_GETTEMPPATH.html'
+                               title='sqlite3_sys::SQLITE_IOERR_GETTEMPPATH'>SQLITE_IOERR_GETTEMPPATH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_LOCK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_LOCK'>SQLITE_IOERR_LOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_MMAP.html'
+                               title='sqlite3_sys::SQLITE_IOERR_MMAP'>SQLITE_IOERR_MMAP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_NOMEM.html'
+                               title='sqlite3_sys::SQLITE_IOERR_NOMEM'>SQLITE_IOERR_NOMEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_RDLOCK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_RDLOCK'>SQLITE_IOERR_RDLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_READ.html'
+                               title='sqlite3_sys::SQLITE_IOERR_READ'>SQLITE_IOERR_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SEEK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SEEK'>SQLITE_IOERR_SEEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SHMLOCK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SHMLOCK'>SQLITE_IOERR_SHMLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SHMMAP.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SHMMAP'>SQLITE_IOERR_SHMMAP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SHMOPEN.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SHMOPEN'>SQLITE_IOERR_SHMOPEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SHMSIZE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SHMSIZE'>SQLITE_IOERR_SHMSIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_SHORT_READ.html'
+                               title='sqlite3_sys::SQLITE_IOERR_SHORT_READ'>SQLITE_IOERR_SHORT_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_TRUNCATE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_TRUNCATE'>SQLITE_IOERR_TRUNCATE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_UNLOCK.html'
+                               title='sqlite3_sys::SQLITE_IOERR_UNLOCK'>SQLITE_IOERR_UNLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_IOERR_WRITE.html'
+                               title='sqlite3_sys::SQLITE_IOERR_WRITE'>SQLITE_IOERR_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_LOCKED.html'
+                               title='sqlite3_sys::SQLITE_LOCKED'>SQLITE_LOCKED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_LOCKED_SHAREDCACHE.html'
+                               title='sqlite3_sys::SQLITE_LOCKED_SHAREDCACHE'>SQLITE_LOCKED_SHAREDCACHE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_MISMATCH.html'
+                               title='sqlite3_sys::SQLITE_MISMATCH'>SQLITE_MISMATCH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_MISUSE.html'
+                               title='sqlite3_sys::SQLITE_MISUSE'>SQLITE_MISUSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOLFS.html'
+                               title='sqlite3_sys::SQLITE_NOLFS'>SQLITE_NOLFS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOMEM.html'
+                               title='sqlite3_sys::SQLITE_NOMEM'>SQLITE_NOMEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOTADB.html'
+                               title='sqlite3_sys::SQLITE_NOTADB'>SQLITE_NOTADB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOTFOUND.html'
+                               title='sqlite3_sys::SQLITE_NOTFOUND'>SQLITE_NOTFOUND</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOTICE.html'
+                               title='sqlite3_sys::SQLITE_NOTICE'>SQLITE_NOTICE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOTICE_RECOVER_ROLLBACK.html'
+                               title='sqlite3_sys::SQLITE_NOTICE_RECOVER_ROLLBACK'>SQLITE_NOTICE_RECOVER_ROLLBACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NOTICE_RECOVER_WAL.html'
+                               title='sqlite3_sys::SQLITE_NOTICE_RECOVER_WAL'>SQLITE_NOTICE_RECOVER_WAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_NULL.html'
+                               title='sqlite3_sys::SQLITE_NULL'>SQLITE_NULL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OK.html'
+                               title='sqlite3_sys::SQLITE_OK'>SQLITE_OK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_AUTOPROXY.html'
+                               title='sqlite3_sys::SQLITE_OPEN_AUTOPROXY'>SQLITE_OPEN_AUTOPROXY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_CREATE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_CREATE'>SQLITE_OPEN_CREATE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_DELETEONCLOSE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_DELETEONCLOSE'>SQLITE_OPEN_DELETEONCLOSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_EXCLUSIVE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_EXCLUSIVE'>SQLITE_OPEN_EXCLUSIVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_FULLMUTEX.html'
+                               title='sqlite3_sys::SQLITE_OPEN_FULLMUTEX'>SQLITE_OPEN_FULLMUTEX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_MAIN_DB.html'
+                               title='sqlite3_sys::SQLITE_OPEN_MAIN_DB'>SQLITE_OPEN_MAIN_DB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_MAIN_JOURNAL.html'
+                               title='sqlite3_sys::SQLITE_OPEN_MAIN_JOURNAL'>SQLITE_OPEN_MAIN_JOURNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_MASTER_JOURNAL.html'
+                               title='sqlite3_sys::SQLITE_OPEN_MASTER_JOURNAL'>SQLITE_OPEN_MASTER_JOURNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_MEMORY.html'
+                               title='sqlite3_sys::SQLITE_OPEN_MEMORY'>SQLITE_OPEN_MEMORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_NOMUTEX.html'
+                               title='sqlite3_sys::SQLITE_OPEN_NOMUTEX'>SQLITE_OPEN_NOMUTEX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_PRIVATECACHE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_PRIVATECACHE'>SQLITE_OPEN_PRIVATECACHE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_READONLY.html'
+                               title='sqlite3_sys::SQLITE_OPEN_READONLY'>SQLITE_OPEN_READONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_READWRITE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_READWRITE'>SQLITE_OPEN_READWRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_SHAREDCACHE.html'
+                               title='sqlite3_sys::SQLITE_OPEN_SHAREDCACHE'>SQLITE_OPEN_SHAREDCACHE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_SUBJOURNAL.html'
+                               title='sqlite3_sys::SQLITE_OPEN_SUBJOURNAL'>SQLITE_OPEN_SUBJOURNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_TEMP_DB.html'
+                               title='sqlite3_sys::SQLITE_OPEN_TEMP_DB'>SQLITE_OPEN_TEMP_DB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_TEMP_JOURNAL.html'
+                               title='sqlite3_sys::SQLITE_OPEN_TEMP_JOURNAL'>SQLITE_OPEN_TEMP_JOURNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_TRANSIENT_DB.html'
+                               title='sqlite3_sys::SQLITE_OPEN_TRANSIENT_DB'>SQLITE_OPEN_TRANSIENT_DB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_URI.html'
+                               title='sqlite3_sys::SQLITE_OPEN_URI'>SQLITE_OPEN_URI</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_OPEN_WAL.html'
+                               title='sqlite3_sys::SQLITE_OPEN_WAL'>SQLITE_OPEN_WAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_PERM.html'
+                               title='sqlite3_sys::SQLITE_PERM'>SQLITE_PERM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_PROTOCOL.html'
+                               title='sqlite3_sys::SQLITE_PROTOCOL'>SQLITE_PROTOCOL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_RANGE.html'
+                               title='sqlite3_sys::SQLITE_RANGE'>SQLITE_RANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_READONLY.html'
+                               title='sqlite3_sys::SQLITE_READONLY'>SQLITE_READONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_READONLY_CANTLOCK.html'
+                               title='sqlite3_sys::SQLITE_READONLY_CANTLOCK'>SQLITE_READONLY_CANTLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_READONLY_DBMOVED.html'
+                               title='sqlite3_sys::SQLITE_READONLY_DBMOVED'>SQLITE_READONLY_DBMOVED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_READONLY_RECOVERY.html'
+                               title='sqlite3_sys::SQLITE_READONLY_RECOVERY'>SQLITE_READONLY_RECOVERY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_READONLY_ROLLBACK.html'
+                               title='sqlite3_sys::SQLITE_READONLY_ROLLBACK'>SQLITE_READONLY_ROLLBACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_ROW.html'
+                               title='sqlite3_sys::SQLITE_ROW'>SQLITE_ROW</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_SCHEMA.html'
+                               title='sqlite3_sys::SQLITE_SCHEMA'>SQLITE_SCHEMA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_TEXT.html'
+                               title='sqlite3_sys::SQLITE_TEXT'>SQLITE_TEXT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_TOOBIG.html'
+                               title='sqlite3_sys::SQLITE_TOOBIG'>SQLITE_TOOBIG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_WARNING.html'
+                               title='sqlite3_sys::SQLITE_WARNING'>SQLITE_WARNING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SQLITE_WARNING_AUTOINDEX.html'
+                               title='sqlite3_sys::SQLITE_WARNING_AUTOINDEX'>SQLITE_WARNING_AUTOINDEX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_blob.html'
+                               title='sqlite3_sys::sqlite3_bind_blob'>sqlite3_bind_blob</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_blob64.html'
+                               title='sqlite3_sys::sqlite3_bind_blob64'>sqlite3_bind_blob64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_double.html'
+                               title='sqlite3_sys::sqlite3_bind_double'>sqlite3_bind_double</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_int.html'
+                               title='sqlite3_sys::sqlite3_bind_int'>sqlite3_bind_int</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_int64.html'
+                               title='sqlite3_sys::sqlite3_bind_int64'>sqlite3_bind_int64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_text.html'
+                               title='sqlite3_sys::sqlite3_bind_text'>sqlite3_bind_text</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_text16.html'
+                               title='sqlite3_sys::sqlite3_bind_text16'>sqlite3_bind_text16</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_bind_text64.html'
+                               title='sqlite3_sys::sqlite3_bind_text64'>sqlite3_bind_text64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_busy_handler.html'
+                               title='sqlite3_sys::sqlite3_busy_handler'>sqlite3_busy_handler</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_busy_timeout.html'
+                               title='sqlite3_sys::sqlite3_busy_timeout'>sqlite3_busy_timeout</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_close.html'
+                               title='sqlite3_sys::sqlite3_close'>sqlite3_close</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_blob.html'
+                               title='sqlite3_sys::sqlite3_column_blob'>sqlite3_column_blob</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_bytes.html'
+                               title='sqlite3_sys::sqlite3_column_bytes'>sqlite3_column_bytes</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_bytes16.html'
+                               title='sqlite3_sys::sqlite3_column_bytes16'>sqlite3_column_bytes16</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_count.html'
+                               title='sqlite3_sys::sqlite3_column_count'>sqlite3_column_count</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_double.html'
+                               title='sqlite3_sys::sqlite3_column_double'>sqlite3_column_double</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_int.html'
+                               title='sqlite3_sys::sqlite3_column_int'>sqlite3_column_int</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_int64.html'
+                               title='sqlite3_sys::sqlite3_column_int64'>sqlite3_column_int64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_text.html'
+                               title='sqlite3_sys::sqlite3_column_text'>sqlite3_column_text</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_text16.html'
+                               title='sqlite3_sys::sqlite3_column_text16'>sqlite3_column_text16</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_column_type.html'
+                               title='sqlite3_sys::sqlite3_column_type'>sqlite3_column_type</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_errcode.html'
+                               title='sqlite3_sys::sqlite3_errcode'>sqlite3_errcode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_errmsg.html'
+                               title='sqlite3_sys::sqlite3_errmsg'>sqlite3_errmsg</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_exec.html'
+                               title='sqlite3_sys::sqlite3_exec'>sqlite3_exec</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_finalize.html'
+                               title='sqlite3_sys::sqlite3_finalize'>sqlite3_finalize</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_free.html'
+                               title='sqlite3_sys::sqlite3_free'>sqlite3_free</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_libversion_number.html'
+                               title='sqlite3_sys::sqlite3_libversion_number'>sqlite3_libversion_number</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_malloc.html'
+                               title='sqlite3_sys::sqlite3_malloc'>sqlite3_malloc</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_open.html'
+                               title='sqlite3_sys::sqlite3_open'>sqlite3_open</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_open_v2.html'
+                               title='sqlite3_sys::sqlite3_open_v2'>sqlite3_open_v2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_prepare.html'
+                               title='sqlite3_sys::sqlite3_prepare'>sqlite3_prepare</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_prepare_v2.html'
+                               title='sqlite3_sys::sqlite3_prepare_v2'>sqlite3_prepare_v2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_reset.html'
+                               title='sqlite3_sys::sqlite3_reset'>sqlite3_reset</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.sqlite3_step.html'
+                               title='sqlite3_sys::sqlite3_step'>sqlite3_step</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite3_bind_callback.html'
+                               title='sqlite3_sys::sqlite3_bind_callback'>sqlite3_bind_callback</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite3_busy_callback.html'
+                               title='sqlite3_sys::sqlite3_busy_callback'>sqlite3_busy_callback</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite3_exec_callback.html'
+                               title='sqlite3_sys::sqlite3_exec_callback'>sqlite3_exec_callback</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite3_int64.html'
+                               title='sqlite3_sys::sqlite3_int64'>sqlite3_int64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite3_uint64.html'
+                               title='sqlite3_sys::sqlite3_uint64'>sqlite3_uint64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite_int64.html'
+                               title='sqlite3_sys::sqlite_int64'>sqlite_int64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.sqlite_uint64.html'
+                               title='sqlite3_sys::sqlite_uint64'>sqlite_uint64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "sqlite3_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["CreateTable","A `CREATE TABLE` statement."]]});

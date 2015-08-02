@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Column","A column definition."]]});

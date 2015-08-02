@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["InsertInto","An `INSERT INTO` statement."]]});
