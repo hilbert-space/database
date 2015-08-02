@@ -60,3 +60,26 @@ mod select;
 pub use self::create_table::{Column, CreateTable};
 pub use self::insert_into::InsertInto;
 pub use self::select::Select;
+
+macro_rules! shortcut(
+    ($(#[$comment:meta] $from:ident -> $into:ident,)*) => (
+        $(
+            #[inline]
+            #[$comment]
+            pub fn $from() -> $into {
+                $into::new()
+            }
+        )*
+    );
+);
+
+shortcut!(
+    #[doc = "Create a `CREATE TABLE` statement."]
+    create_table -> CreateTable,
+
+    #[doc = "Create an `INSERT INTO` statement."]
+    insert_into -> InsertInto,
+
+    #[doc = "Create a `SELECT` statement."]
+    select -> Select,
+);

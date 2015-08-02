@@ -8,7 +8,7 @@ use {Result, Value};
 /// A driver.
 pub trait Driver {
     /// The type of prepared statements.
-    type Statement: Statement;
+    type Prepared: Prepared;
 
     /// Establish a connection.
     fn connect<T: AsRef<Path>>(T) -> Result<Self>;
@@ -17,11 +17,11 @@ pub trait Driver {
     fn execute<T: AsRef<str>>(&self, T) -> Result<()>;
 
     /// Prepare a statement.
-    fn prepare<T: AsRef<str>>(&self, T) -> Result<Self::Statement>;
+    fn prepare<T: AsRef<str>>(&self, T) -> Result<Self::Prepared>;
 }
 
 /// A prepared statement.
-pub trait Statement {
+pub trait Prepared {
     /// The type of records.
     type Record: ?Sized + Index<usize, Output=Value>;
 

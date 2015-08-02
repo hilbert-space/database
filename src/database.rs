@@ -25,7 +25,7 @@ impl<T: Driver> Database<T> {
 
     /// Prepare a statement.
     #[inline]
-    pub fn prepare<S: Statement>(&self, statement: S) -> Result<T::Statement> {
+    pub fn prepare<S: Statement>(&self, statement: S) -> Result<T::Prepared> {
         self.driver.prepare(try!(statement.compile()))
     }
 }

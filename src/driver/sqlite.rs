@@ -14,15 +14,15 @@ pub struct Driver<'l> {
     phantom: PhantomData<&'l ()>,
 }
 
-/// An SQLite statement.
-pub struct Statement<'l> {
+/// An SQLite prepared statement.
+pub struct Prepared<'l> {
     state: Option<sqlite::State>,
     values: Option<Vec<Value>>,
     backend: sqlite::Statement<'l>,
 }
 
 impl<'l> driver::Driver for Driver<'l> {
-    type Statement = Statement<'l>;
+    type Prepared = Prepared<'l>;
 
     fn connect<T: AsRef<Path>>(path: T) -> Result<Self> {
         Ok(Driver { backend: ok!(sqlite::open(path)), phantom: PhantomData })
@@ -35,13 +35,13 @@ impl<'l> driver::Driver for Driver<'l> {
     }
 
     #[inline]
-    fn prepare<T: AsRef<str>>(&self, query: T) -> Result<Self::Statement> {
+    fn prepare<T: AsRef<str>>(&self, query: T) -> Result<Self::Prepared> {
         let backend = unsafe { mem::transmute(ok!(self.backend.prepare(query))) };
-        Ok(Statement { state: None, values: None, backend: backend })
+        Ok(Prepared { state: None, values: None, backend: backend })
     }
 }
 
-impl<'l> driver::Statement for Statement<'l> {
+impl<'l> driver::Prepared for Prepared<'l> {
     type Record = [Value];
 
     fn execute(&mut self, values: &[Value]) -> Result<()> {

@@ -96,14 +96,14 @@ impl Statement for CreateTable {
 #[cfg(test)]
 mod tests {
     use Type;
-    use statement::{CreateTable, Statement};
+    use statement::*;
 
     #[test]
     fn compile() {
-        let statement = CreateTable::new().name("foo")
-                                          .if_not_exists()
-                                          .column(|column| column.name("bar").kind(Type::Float))
-                                          .column(|column| column.name("baz").kind(Type::String));
+        let statement = create_table().name("foo")
+                                      .if_not_exists()
+                                      .column(|column| column.name("bar").kind(Type::Float))
+                                      .column(|column| column.name("baz").kind(Type::String));
 
         assert_eq!(&statement.compile().unwrap(),
                    "CREATE TABLE IF NOT EXISTS `foo` (`bar` REAL, `baz` TEXT)");

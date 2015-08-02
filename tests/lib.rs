@@ -1,26 +1,24 @@
 extern crate database;
 
-use database::driver::{SQLite, Statement};
-use database::statement::{CreateTable, InsertInto, Select};
-use database::{Database, Type, Value};
+use database::prelude::*;
 
 #[test]
 fn workflow() {
     let database: Database<SQLite> = Database::open(":memory:").unwrap();
 
-    let statement = CreateTable::new().name("foo")
-                                      .if_not_exists()
-                                      .column(|column| column.name("bar").kind(Type::Float))
-                                      .column(|column| column.name("baz").kind(Type::Integer));
+    let statement = create_table().name("foo")
+                                  .if_not_exists()
+                                  .column(|column| column.name("bar").kind(Type::Float))
+                                  .column(|column| column.name("baz").kind(Type::Integer));
     database.execute(statement).unwrap();
 
-    let statement = InsertInto::new().table("foo").column("bar").column("baz").multiplex(3);
+    let statement = insert_into().table("foo").column("bar").column("baz").multiplex(3);
     let mut statement = database.prepare(statement).unwrap();
     statement.execute(&[Value::Float(42.0), Value::Integer(69),
                         Value::Float(43.0), Value::Integer(70),
                         Value::Float(44.0), Value::Integer(71)]).unwrap();
 
-    let statement = Select::new().table("foo");
+    let statement = select().table("foo");
     let mut statement = database.prepare(statement).unwrap();
     statement.execute(&[]).unwrap();
 

@@ -7,21 +7,20 @@
 //!
 //! let database: Database<SQLite> = Database::open(":memory:").unwrap();
 //!
-//! let statement = CreateTable::new()
-//!                             .name("foo")
-//!                             .column(|column| {
-//!                                 column.name("bar").kind(Type::Float)
-//!                             })
-//!                             .column(|column| {
-//!                                 column.name("baz").kind(Type::Integer)
-//!                             });
+//! let statement = create_table().name("foo")
+//!                               .column(|column| {
+//!                                   column.name("bar").kind(Type::Float)
+//!                               })
+//!                               .column(|column| {
+//!                                   column.name("baz").kind(Type::Integer)
+//!                               });
 //! database.execute(statement).unwrap();
 //!
-//! let statement = InsertInto::new().table("foo").column("bar").column("baz");
+//! let statement = insert_into().table("foo").column("bar").column("baz");
 //! let mut statement = database.prepare(statement).unwrap();
 //! statement.execute(&[Value::Float(42.0), Value::Integer(69)]).unwrap();
 //!
-//! let statement = Select::new().table("foo");
+//! let statement = select().table("foo");
 //! let mut statement = database.prepare(statement).unwrap();
 //! statement.execute(&[]).unwrap();
 //!

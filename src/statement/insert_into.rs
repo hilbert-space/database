@@ -74,11 +74,11 @@ impl Statement for InsertInto {
 
 #[cfg(test)]
 mod tests {
-    use statement::{InsertInto, Statement};
+    use statement::*;
 
     #[test]
     fn compile() {
-        let statement = InsertInto::new().table("foo").column("bar").column("baz").multiplex(3);
+        let statement = insert_into().table("foo").column("bar").column("baz").multiplex(3);
 
         assert_eq!(&statement.compile().unwrap(),
                    "INSERT INTO `foo` (`bar`, `baz`) VALUES (?, ?), (?, ?), (?, ?)");

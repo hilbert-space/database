@@ -69,23 +69,23 @@ impl Statement for Select {
 
 #[cfg(test)]
 mod tests {
-    use statement::{Select, Statement};
+    use statement::*;
 
     #[test]
     fn compile_all() {
-        let statement = Select::new().table("foo");
+        let statement = select().table("foo");
         assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo`");
     }
 
     #[test]
     fn compile_limit() {
-        let statement = Select::new().table("foo").limit(10);
+        let statement = select().table("foo").limit(10);
         assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo` LIMIT 10");
     }
 
     #[test]
     fn compile_subset() {
-        let statement = Select::new().table("foo").column("bar").column("baz");
+        let statement = select().table("foo").column("bar").column("baz");
         assert_eq!(&statement.compile().unwrap(), "SELECT `bar`, `baz` FROM `foo`");
     }
 }
