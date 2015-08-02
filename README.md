@@ -4,6 +4,33 @@ The package provides a relational database.
 
 ## [Documentation][doc]
 
+## Example
+
+```rust
+use database::prelude::*;
+
+let database: Database<SQLite> = Database::open(":memory:").unwrap();
+
+let query = CreateTable::new().name("foo")
+                        .column(|column| column.name("bar").kind(Type::Float))
+                        .column(|column| column.name("baz").kind(Type::Integer));
+
+database.execute(query).unwrap();
+
+let query = Insert::new().table("foo").column("bar").column("baz");
+let mut statement = database.prepare(query).unwrap();
+
+statement.execute(&[Value::Float(42.0), Value::Integer(69)]).unwrap();
+
+let query = Select::new().table("foo");
+let mut statement = database.prepare(query).unwrap();
+statement.execute(&[]).unwrap();
+while let Some(record) = statement.next().unwrap() {
+    assert_eq!(record[0], Value::Float(42.0));
+    assert_eq!(record[1], Value::Integer(69));
+}
+```
+
 ## Contributing
 
 1. Fork the project.
