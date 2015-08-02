@@ -8,6 +8,13 @@ pub trait Query {
     fn compile(self) -> Result<String>;
 }
 
+impl<T: ToString> Query for T {
+    #[inline]
+    fn compile(self) -> Result<String> {
+        Ok(self.to_string())
+    }
+}
+
 struct Buffer(Vec<String>);
 
 impl Buffer {
