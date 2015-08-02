@@ -47,7 +47,7 @@ pub type Result<T> = result::Result<T, Error>;
 
 struct Safe<T: Driver>(Rc<T>);
 
-/// A column type.
+/// A data type.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Type {
     /// The binary type.
@@ -60,7 +60,7 @@ pub enum Type {
     String,
 }
 
-/// A column value.
+/// A typed value.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Value {
     /// Binary data.
@@ -133,8 +133,8 @@ impl<T: Driver> Deref for Safe<T> {
 }
 
 pub mod driver;
+pub mod language;
 pub mod prelude;
-pub mod statement;
 
 mod database;
 

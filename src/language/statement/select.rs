@@ -1,7 +1,8 @@
 use std::default::Default;
 
 use Result;
-use statement::{Buffer, Statement};
+use language::Buffer;
+use language::statement::Statement;
 
 /// A `SELECT` statement.
 #[derive(Clone, Debug, Default)]
@@ -26,7 +27,7 @@ impl Select {
         self
     }
 
-    /// Add a limit.
+    /// Set the limit.
     pub fn limit(mut self, value: usize) -> Self {
         self.limit = Some(value);
         self
@@ -69,7 +70,7 @@ impl Statement for Select {
 
 #[cfg(test)]
 mod tests {
-    use statement::*;
+    use prelude::*;
 
     #[test]
     fn compile_all() {

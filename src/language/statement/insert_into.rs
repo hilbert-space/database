@@ -1,7 +1,8 @@
 use std::default::Default;
 
 use Result;
-use statement::{Buffer, Statement};
+use language::Buffer;
+use language::statement::Statement;
 
 /// An `INSERT INTO` statement.
 #[derive(Clone, Debug, Default)]
@@ -74,7 +75,7 @@ impl Statement for InsertInto {
 
 #[cfg(test)]
 mod tests {
-    use statement::*;
+    use prelude::*;
 
     #[test]
     fn compile() {

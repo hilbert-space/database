@@ -1,6 +1,7 @@
 use std::default::Default;
 
-use statement::{Buffer, Statement};
+use language::Buffer;
+use language::statement::Statement;
 use {Result, Type};
 
 /// A column description.
@@ -95,8 +96,7 @@ impl Statement for CreateTable {
 
 #[cfg(test)]
 mod tests {
-    use Type;
-    use statement::*;
+    use prelude::*;
 
     #[test]
     fn compile() {

@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use driver::Driver;
-use statement::Statement;
+use language::statement::Statement;
 use {Result, Safe};
 
 /// A database.
