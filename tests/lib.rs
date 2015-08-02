@@ -1,7 +1,7 @@
 extern crate database;
 
 use database::driver::{SQLite, Statement};
-use database::statement::{CreateTable, Insert, Select};
+use database::statement::{CreateTable, InsertInto, Select};
 use database::{Database, Type, Value};
 
 #[test]
@@ -14,7 +14,7 @@ fn workflow() {
                                       .column(|column| column.name("baz").kind(Type::Integer));
     database.execute(statement).unwrap();
 
-    let statement = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
+    let statement = InsertInto::new().table("foo").column("bar").column("baz").multiplex(3);
     let mut statement = database.prepare(statement).unwrap();
     statement.execute(&[Value::Float(42.0), Value::Integer(69),
                         Value::Float(43.0), Value::Integer(70),

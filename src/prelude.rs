@@ -9,5 +9,5 @@ pub use driver::SQLite;
 pub use driver::Statement;
 
 pub use statement::CreateTable;
-pub use statement::Insert;
+pub use statement::InsertInto;
 pub use statement::Select;

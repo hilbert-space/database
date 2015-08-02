@@ -3,18 +3,18 @@ use std::default::Default;
 use Result;
 use statement::{Buffer, Statement};
 
-/// An `INSERT` statement.
+/// An `INSERT INTO` statement.
 #[derive(Clone, Debug, Default)]
-pub struct Insert {
+pub struct InsertInto {
     columns: Option<Vec<String>>,
     multiplex: Option<usize>,
     table: Option<String>,
 }
 
-impl Insert {
+impl InsertInto {
     /// Create a statement.
     #[inline]
-    pub fn new() -> Insert {
+    pub fn new() -> Self {
         Default::default()
     }
 
@@ -39,7 +39,7 @@ impl Insert {
     }
 }
 
-impl Statement for Insert {
+impl Statement for InsertInto {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("INSERT INTO");
@@ -74,11 +74,11 @@ impl Statement for Insert {
 
 #[cfg(test)]
 mod tests {
-    use statement::{Insert, Statement};
+    use statement::{InsertInto, Statement};
 
     #[test]
     fn compile() {
-        let statement = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
+        let statement = InsertInto::new().table("foo").column("bar").column("baz").multiplex(3);
 
         assert_eq!(&statement.compile().unwrap(),
                    "INSERT INTO `foo` (`bar`, `baz`) VALUES (?, ?), (?, ?), (?, ?)");

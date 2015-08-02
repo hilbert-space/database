@@ -53,10 +53,10 @@ macro_rules! take(
     );
 );
 
-mod create;
-mod insert;
+mod create_table;
+mod insert_into;
 mod select;
 
-pub use self::create::{CreateColumn, CreateTable};
-pub use self::insert::Insert;
+pub use self::create_table::{Column, CreateTable};
+pub use self::insert_into::InsertInto;
 pub use self::select::Select;

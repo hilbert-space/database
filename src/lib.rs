@@ -17,7 +17,7 @@
 //!                             });
 //! database.execute(statement).unwrap();
 //!
-//! let statement = Insert::new().table("foo").column("bar").column("baz");
+//! let statement = InsertInto::new().table("foo").column("bar").column("baz");
 //! let mut statement = database.prepare(statement).unwrap();
 //! statement.execute(&[Value::Float(42.0), Value::Integer(69)]).unwrap();
 //!

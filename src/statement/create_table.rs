@@ -3,9 +3,9 @@ use std::default::Default;
 use statement::{Buffer, Statement};
 use {Result, Type};
 
-/// A part of a `CREATE TABLE` statement.
+/// A column description.
 #[derive(Clone, Debug, Default)]
-pub struct CreateColumn {
+pub struct Column {
     name: Option<String>,
     kind: Option<Type>,
 }
@@ -13,12 +13,12 @@ pub struct CreateColumn {
 /// A `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
 pub struct CreateTable {
-    columns: Option<Vec<CreateColumn>>,
+    columns: Option<Vec<Column>>,
     if_not_exists: Option<()>,
     name: Option<String>,
 }
 
-impl CreateColumn {
+impl Column {
     /// Set the name.
     pub fn name<T: ToString>(mut self, value: T) -> Self {
         self.name = Some(value.to_string());
@@ -32,7 +32,7 @@ impl CreateColumn {
     }
 }
 
-impl Statement for CreateColumn {
+impl Statement for Column {
     fn compile(mut self) -> Result<String> {
         let kind = match take!(self, kind) {
             Type::Binary => "BLOB",
@@ -47,12 +47,12 @@ impl Statement for CreateColumn {
 impl CreateTable {
     /// Create a statement.
     #[inline]
-    pub fn new() -> CreateTable {
+    pub fn new() -> Self {
         Default::default()
     }
 
     /// Add a column.
-    pub fn column<F>(mut self, mut build: F) -> Self where F: FnMut(CreateColumn) -> CreateColumn {
+    pub fn column<F>(mut self, mut build: F) -> Self where F: FnMut(Column) -> Column {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
         columns.push(build(Default::default()));
         self.columns = Some(columns);
