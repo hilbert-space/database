@@ -8,8 +8,8 @@ fn workflow() {
 
     let statement = create_table().name("foo")
                                   .if_not_exists()
-                                  .column(|column| column.name("bar").kind(Type::Float))
-                                  .column(|column| column.name("baz").kind(Type::Integer));
+                                  .column(column().name("bar").kind(Type::Float))
+                                  .column(column().name("baz").kind(Type::Integer));
     database.execute(statement).unwrap();
 
     let statement = insert_into().table("foo").column("bar").column("baz").multiplex(3);

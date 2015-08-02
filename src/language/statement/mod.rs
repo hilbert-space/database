@@ -1,9 +1,11 @@
 //! Statements.
 
-use language::Unit;
+use Result;
 
 /// A statement.
-pub trait Statement: Unit {
+pub trait Statement {
+    /// Compile the statement.
+    fn compile(&self) -> Result<String>;
 }
 
 mod create_table;

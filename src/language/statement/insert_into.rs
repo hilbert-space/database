@@ -1,8 +1,8 @@
 use std::default::Default;
 
 use Result;
+use language::Buffer;
 use language::statement::Statement;
-use language::{Buffer, Unit};
 
 /// An `INSERT INTO` statement.
 #[derive(Clone, Debug, Default)]
@@ -41,19 +41,14 @@ impl InsertInto {
 }
 
 impl Statement for InsertInto {
-}
-
-impl Unit for InsertInto {
-    fn compile(mut self) -> Result<String> {
+    fn compile(&self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("INSERT INTO");
-        buffer.push(format!("`{}`", take!(self, table)));
+        buffer.push(format!("`{}`", some!(self, table)));
         buffer.push({
             let names = {
                 let mut buffer = Buffer::new();
-                let mut columns = take!(self, columns);
-                columns.reverse();
-                while let Some(column) = columns.pop() {
+                for column in some!(self, columns) {
                     buffer.push(format!("`{}`", column));
                 }
                 buffer
@@ -65,7 +60,7 @@ impl Unit for InsertInto {
                 }
                 let one = format!("({})", buffer.join(", "));
                 let mut buffer = Buffer::new();
-                for _ in 0..self.multiplex.take().unwrap_or(1) {
+                for _ in 0..self.multiplex.unwrap_or(1) {
                     buffer.push(&one);
                 }
                 buffer

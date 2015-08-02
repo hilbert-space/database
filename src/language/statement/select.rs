@@ -1,15 +1,17 @@
 use std::default::Default;
 
 use Result;
+use language::Buffer;
+use language::expression::Expression;
 use language::statement::Statement;
-use language::{Buffer, Unit};
 
 /// A `SELECT` statement.
-#[derive(Clone, Debug, Default)]
+#[derive(Debug, Default)]
 pub struct Select {
     columns: Option<Vec<String>>,
     limit: Option<usize>,
     table: Option<String>,
+    whereins: Option<Vec<Box<Expression>>>,
 }
 
 impl Select {
@@ -27,6 +29,14 @@ impl Select {
         self
     }
 
+    /// Add a constraint.
+    pub fn wherein<T: 'static + Expression>(mut self, value: T) -> Self {
+        let mut whereins = self.whereins.take().unwrap_or_else(|| vec![]);
+        whereins.push(Box::new(value));
+        self.whereins = Some(whereins);
+        self
+    }
+
     /// Set the limit.
     pub fn limit(mut self, value: usize) -> Self {
         self.limit = Some(value);
@@ -41,30 +51,33 @@ impl Select {
 }
 
 impl Statement for Select {
-}
-
-impl Unit for Select {
-    fn compile(mut self) -> Result<String> {
+    fn compile(&self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("SELECT");
-        match self.columns.take() {
-            Some(mut columns) => {
-                buffer.push({
-                    let mut buffer = Buffer::new();
-                    columns.reverse();
-                    while let Some(column) = columns.pop() {
-                        buffer.push(format!("`{}`", column));
-                    }
-                    buffer.join(", ")
-                });
-            },
-            _ => {
-                buffer.push("*");
-            },
+        if let &Some(ref columns) = &self.columns {
+            buffer.push({
+                let mut buffer = Buffer::new();
+                for column in columns {
+                    buffer.push(format!("`{}`", column));
+                }
+                buffer.join(", ")
+            });
+        } else {
+            buffer.push("*");
         }
         buffer.push("FROM");
-        buffer.push(format!("`{}`", take!(self, table)));
-        if let Some(limit) = self.limit.take() {
+        buffer.push(format!("`{}`", some!(self, table)));
+        if let &Some(ref whereins) = &self.whereins {
+            buffer.push("WHERE");
+            buffer.push({
+                let mut buffer = Buffer::new();
+                for wherein in whereins {
+                    buffer.push(try!(wherein.compile()));
+                }
+                buffer.join(" AND ")
+            });
+        }
+        if let Some(limit) = self.limit {
             buffer.push(format!("LIMIT {}", limit));
         }
         Ok(buffer.join(" "))
@@ -85,6 +98,12 @@ mod tests {
     fn compile_limit() {
         let statement = select().table("foo").limit(10);
         assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo` LIMIT 10");
+    }
+
+    #[test]
+    fn compile_like() {
+        let statement = select().table("foo").wherein(column().name("bar").like("%baz%"));
+        assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo` WHERE `bar` LIKE '%baz%'");
     }
 
     #[test]

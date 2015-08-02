@@ -12,12 +12,8 @@ use database::prelude::*;
 let database: Database<SQLite> = Database::open(":memory:").unwrap();
 
 let statement = create_table().name("foo")
-                              .column(|column| {
-                                  column.name("bar").kind(Type::Float)
-                              })
-                              .column(|column| {
-                                  column.name("baz").kind(Type::Integer)
-                              });
+                              .column(column().name("bar").kind(Type::Float))
+                              .column(column().name("baz").kind(Type::Integer));
 database.execute(statement).unwrap();
 
 let statement = insert_into().table("foo").column("bar").column("baz");

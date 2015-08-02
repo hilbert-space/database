@@ -1,9 +1,9 @@
 use std::default::Default;
 
 use Result;
-use language::description::Column;
+use language::Buffer;
+use language::definition::{Definition, Column};
 use language::statement::Statement;
-use language::{Buffer, Unit};
 
 /// A `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
@@ -21,9 +21,9 @@ impl CreateTable {
     }
 
     /// Add a column.
-    pub fn column<F>(mut self, mut build: F) -> Self where F: FnMut(Column) -> Column {
+    pub fn column(mut self, column: Column) -> Self {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
-        columns.push(build(Default::default()));
+        columns.push(column);
         self.columns = Some(columns);
         self
     }
@@ -42,21 +42,16 @@ impl CreateTable {
 }
 
 impl Statement for CreateTable {
-}
-
-impl Unit for CreateTable {
-    fn compile(mut self) -> Result<String> {
+    fn compile(&self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("CREATE TABLE");
-        if let Some(_) = self.if_not_exists.take() {
+        if let Some(_) = self.if_not_exists {
              buffer.push("IF NOT EXISTS");
         }
-        buffer.push(format!("`{}`", take!(self, name)));
+        buffer.push(format!("`{}`", some!(self, name)));
         buffer.push({
             let mut buffer = Buffer::new();
-            let mut columns = take!(self, columns);
-            columns.reverse();
-            while let Some(column) = columns.pop() {
+            for column in some!(self, columns) {
                 buffer.push(try!(column.compile()));
             }
             format!("({})", buffer.join(", "))
@@ -73,8 +68,8 @@ mod tests {
     fn compile() {
         let statement = create_table().name("foo")
                                       .if_not_exists()
-                                      .column(|column| column.name("bar").kind(Type::Float))
-                                      .column(|column| column.name("baz").kind(Type::String));
+                                      .column(column().name("bar").kind(Type::Float))
+                                      .column(column().name("baz").kind(Type::String));
 
         assert_eq!(&statement.compile().unwrap(),
                    "CREATE TABLE IF NOT EXISTS `foo` (`bar` REAL, `baz` TEXT)");

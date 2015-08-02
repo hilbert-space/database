@@ -1,14 +1,6 @@
 //! Structured query language.
 
-use Result;
-
 struct Buffer(Vec<String>);
-
-/// A language unit.
-pub trait Unit {
-    /// Compile the unit.
-    fn compile(self) -> Result<String>;
-}
 
 impl Buffer {
     fn new() -> Buffer {
@@ -37,17 +29,10 @@ impl Buffer {
     }
 }
 
-impl<T: ToString> Unit for T {
-    #[inline]
-    fn compile(self) -> Result<String> {
-        Ok(self.to_string())
-    }
-}
-
-macro_rules! take(
+macro_rules! some(
     ($from:ident, $what:ident) => (
-        match $from.$what.take() {
-            Some(value) => value,
+        match $from.$what {
+            Some(ref value) => value,
             _ => raise!(concat!("expected `", stringify!($what), "` to be set")),
         }
     );
@@ -65,5 +50,7 @@ macro_rules! shortcut(
     );
 );
 
-pub mod description;
+pub mod definition;
+pub mod expression;
+pub mod operation;
 pub mod statement;
