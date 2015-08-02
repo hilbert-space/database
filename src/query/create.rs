@@ -1,15 +1,17 @@
 use std::default::Default;
 
 use Result;
-use column::ColumnKind;
-use operation::{Buffer, Operation};
+use column::Type;
+use query::{Buffer, Query};
 
+/// A part of a `CREATE TABLE` query.
 #[derive(Clone, Debug, Default)]
 pub struct CreateColumn {
     name: Option<String>,
-    kind: Option<ColumnKind>,
+    kind: Option<Type>,
 }
 
+/// A `CREATE TABLE` query.
 #[derive(Clone, Debug, Default)]
 pub struct CreateTable {
     columns: Option<Vec<CreateColumn>>,
@@ -18,67 +20,73 @@ pub struct CreateTable {
 }
 
 impl CreateColumn {
-    pub fn name(&mut self, value: &str) -> &mut Self {
+    /// Set the name.
+    pub fn name<T: ToString>(mut self, value: T) -> Self {
         self.name = Some(value.to_string());
         self
     }
 
-    pub fn kind(&mut self, value: ColumnKind) -> &mut Self {
+    /// Set the type.
+    pub fn kind(mut self, value: Type) -> Self {
         self.kind = Some(value);
         self
     }
 }
 
-impl Operation for CreateColumn {
+impl Query for CreateColumn {
     fn compile(mut self) -> Result<String> {
         let kind = match take!(self, kind) {
-            ColumnKind::Float => "REAL",
-            ColumnKind::Integer => "INTEGER",
-            ColumnKind::Text => "TEXT",
+            Type::Binary => "BLOB",
+            Type::Float => "REAL",
+            Type::Integer => "INTEGER",
+            Type::String => "TEXT",
         };
         Ok(format!("`{}` {}", take!(self, name), kind))
     }
 }
 
 impl CreateTable {
+    /// Create a query.
+    #[inline]
     pub fn new() -> CreateTable {
-        CreateTable::default()
+        Default::default()
     }
 
-    pub fn column<F>(&mut self, mut build: F) -> &mut Self where F: FnMut(&mut CreateColumn) {
-        let mut column = CreateColumn::default();
-        build(&mut column);
+    /// Add a column.
+    pub fn column<F>(mut self, mut build: F) -> Self where F: FnMut(CreateColumn) -> CreateColumn {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
-        columns.push(column);
+        columns.push(build(Default::default()));
         self.columns = Some(columns);
         self
     }
 
-    pub fn if_not_exists(&mut self) -> &mut Self {
+    /// Mark as applicable only if the table does not exist.
+    pub fn if_not_exists(mut self) -> Self {
         self.if_not_exists = Some(());
         self
     }
 
-    pub fn name(&mut self, value: &str) -> &mut Self {
+    /// Set the name.
+    pub fn name<T: ToString>(mut self, value: T) -> Self {
         self.name = Some(value.to_string());
         self
     }
 }
 
-impl Operation for CreateTable {
+impl Query for CreateTable {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
-        buffer.copy("CREATE TABLE");
+        buffer.push("CREATE TABLE");
         if let Some(_) = self.if_not_exists.take() {
-             buffer.copy("IF NOT EXISTS");
+             buffer.push("IF NOT EXISTS");
         }
-        buffer.take(format!("`{}`", take!(self, name)));
-        buffer.take({
+        buffer.push(format!("`{}`", take!(self, name)));
+        buffer.push({
             let mut buffer = Buffer::new();
             let mut columns = take!(self, columns);
             columns.reverse();
             while let Some(column) = columns.pop() {
-                buffer.take(try!(column.compile()));
+                buffer.push(try!(column.compile()));
             }
             format!("({})", buffer.join(", "))
         });
@@ -88,25 +96,16 @@ impl Operation for CreateTable {
 
 #[cfg(test)]
 mod tests {
-    use column::ColumnKind;
-    use operation::{CreateTable, Operation};
+    use column::Type;
+    use query::{CreateTable, Query};
 
     #[test]
     fn compile() {
-        let mut operation = CreateTable::new();
+        let query = CreateTable::new().name("foo").if_not_exists()
+                                .column(|column| column.name("bar").kind(Type::Float))
+                                .column(|column| column.name("baz").kind(Type::String));
 
-        operation.name("foo")
-                 .if_not_exists()
-                 .column(|column| {
-                     column.name("bar");
-                     column.kind(ColumnKind::Float);
-                 })
-                 .column(|column| {
-                     column.name("baz");
-                     column.kind(ColumnKind::Text);
-                 });
-
-        assert_eq!(&operation.compile().unwrap(),
+        assert_eq!(&query.compile().unwrap(),
                    "CREATE TABLE IF NOT EXISTS `foo` (`bar` REAL, `baz` TEXT)");
     }
 }

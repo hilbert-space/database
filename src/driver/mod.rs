@@ -1,9 +1,10 @@
 //! Database drivers.
 
-use column::ColumnValue;
+use std::ops::Index;
 use std::path::Path;
 
 use Result;
+use column::Value;
 
 /// A driver.
 pub trait Driver {
@@ -22,8 +23,14 @@ pub trait Driver {
 
 /// A prepared statement.
 pub trait Statement {
+    /// The type of records.
+    type Record: ?Sized + Index<usize, Output=Value>;
+
     /// Assign values to parameters and execute.
-    fn execute(&mut self, &[ColumnValue]) -> Result<()>;
+    fn execute(&mut self, &[Value]) -> Result<()>;
+
+    /// Read the next record.
+    fn next<'l>(&'l mut self) -> Result<Option<&'l Self::Record>>;
 }
 
 pub mod sqlite;

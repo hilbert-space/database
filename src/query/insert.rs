@@ -1,8 +1,9 @@
 use std::default::Default;
 
 use Result;
-use operation::{Buffer, Operation};
+use query::{Buffer, Query};
 
+/// An `INSERT` query.
 #[derive(Clone, Debug, Default)]
 pub struct Insert {
     columns: Option<Vec<String>>,
@@ -11,52 +12,57 @@ pub struct Insert {
 }
 
 impl Insert {
+    /// Create a query.
+    #[inline]
     pub fn new() -> Insert {
-        Insert::default()
+        Default::default()
     }
 
-    pub fn column(&mut self, value: &str) -> &mut Self {
+    /// Add a column.
+    pub fn column<T: ToString>(mut self, value: T) -> Self {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
         columns.push(value.to_string());
         self.columns = Some(columns);
         self
     }
 
-    pub fn multiplex(&mut self, value: usize) -> &mut Self {
+    /// Extend the query for inserting multiple rows at once.
+    pub fn multiplex(mut self, value: usize) -> Self {
         self.multiplex = Some(value);
         self
     }
 
-    pub fn table(&mut self, value: &str) -> &mut Self {
+    /// Set the table.
+    pub fn table<T: ToString>(mut self, value: T) -> Self {
         self.table = Some(value.to_string());
         self
     }
 }
 
-impl Operation for Insert {
+impl Query for Insert {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
-        buffer.copy("INSERT INTO");
-        buffer.take(format!("`{}`", take!(self, table)));
-        buffer.take({
+        buffer.push("INSERT INTO");
+        buffer.push(format!("`{}`", take!(self, table)));
+        buffer.push({
             let names = {
                 let mut buffer = Buffer::new();
                 let mut columns = take!(self, columns);
                 columns.reverse();
                 while let Some(column) = columns.pop() {
-                    buffer.take(format!("`{}`", column));
+                    buffer.push(format!("`{}`", column));
                 }
                 buffer
             };
             let values = {
                 let mut buffer = Buffer::new();
                 for _ in 0..names.len() {
-                    buffer.copy("?");
+                    buffer.push("?");
                 }
                 let one = format!("({})", buffer.join(", "));
                 let mut buffer = Buffer::new();
                 for _ in 0..self.multiplex.take().unwrap_or(1) {
-                    buffer.copy(&one);
+                    buffer.push(&one);
                 }
                 buffer
             };
@@ -68,18 +74,13 @@ impl Operation for Insert {
 
 #[cfg(test)]
 mod tests {
-    use operation::{Insert, Operation};
+    use query::{Insert, Query};
 
     #[test]
     fn compile() {
-        let mut operation = Insert::new();
+        let query = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
 
-        operation.table("foo")
-                 .column("bar")
-                 .column("baz")
-                 .multiplex(3);
-
-        assert_eq!(&operation.compile().unwrap(),
+        assert_eq!(&query.compile().unwrap(),
                    "INSERT INTO `foo` (`bar`, `baz`) VALUES (?, ?), (?, ?), (?, ?)");
     }
 }

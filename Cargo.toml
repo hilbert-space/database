@@ -11,5 +11,5 @@ description = "Database."
 default = ["sqlite"]
 
 [dependencies.sqlite]
-version = "*"
+version = "0.17"
 optional = true

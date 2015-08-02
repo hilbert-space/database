@@ -1,6 +1,7 @@
 use std::path::Path;
 
 use driver::Driver;
+use query::Query;
 use {Result, Safe};
 
 /// A database.
@@ -15,9 +16,16 @@ impl<T: Driver> Database<T> {
     pub fn open<P: AsRef<Path>>(path: P) -> Result<Self> {
         Ok(Database { driver: Safe::new(try!(T::connect(path))) })
     }
-}
 
-#[inline]
-pub fn driver<T: Driver>(database: &Database<T>) -> Safe<T> {
-    database.driver.clone()
+    /// Execute a query.
+    #[inline]
+    pub fn execute<Q: Query>(&self, query: Q) -> Result<()> {
+        self.driver.execute(try!(query.compile()))
+    }
+
+    /// Prepare a statement.
+    #[inline]
+    pub fn prepare<Q: Query>(&self, query: Q) -> Result<T::Statement> {
+        self.driver.prepare(try!(query.compile()))
+    }
 }

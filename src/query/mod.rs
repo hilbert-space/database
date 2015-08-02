@@ -1,6 +1,10 @@
+//! Queries.
+
 use Result;
 
-pub trait Operation {
+/// A query.
+pub trait Query {
+    /// Compile the query.
     fn compile(self) -> Result<String>;
 }
 
@@ -11,13 +15,8 @@ impl Buffer {
         Buffer(vec![])
     }
 
-    fn copy(&mut self, chunk: &str) -> &mut Self {
+    fn push<T: ToString>(&mut self, chunk: T) -> &mut Self {
         self.0.push(chunk.to_string());
-        self
-    }
-
-    fn take(&mut self, chunk: String) -> &mut Self {
-        self.0.push(chunk);
         self
     }
 
@@ -49,6 +48,8 @@ macro_rules! take(
 
 mod create;
 mod insert;
+mod select;
 
 pub use self::create::{CreateColumn, CreateTable};
 pub use self::insert::Insert;
+pub use self::select::Select;
