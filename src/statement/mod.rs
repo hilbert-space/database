@@ -1,14 +1,14 @@
-//! Queries.
+//! Statements.
 
 use Result;
 
-/// A query.
-pub trait Query {
-    /// Compile the query.
+/// A statement.
+pub trait Statement {
+    /// Compile the statement.
     fn compile(self) -> Result<String>;
 }
 
-impl<T: ToString> Query for T {
+impl<T: ToString> Statement for T {
     #[inline]
     fn compile(self) -> Result<String> {
         Ok(self.to_string())

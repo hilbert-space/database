@@ -1,9 +1,9 @@
 use std::default::Default;
 
 use Result;
-use query::{Buffer, Query};
+use statement::{Buffer, Statement};
 
-/// A `SELECT` query.
+/// A `SELECT` statement.
 #[derive(Clone, Debug, Default)]
 pub struct Select {
     columns: Option<Vec<String>>,
@@ -11,7 +11,7 @@ pub struct Select {
 }
 
 impl Select {
-    /// Create a query.
+    /// Create a statement.
     #[inline]
     pub fn new() -> Select {
         Default::default()
@@ -32,7 +32,7 @@ impl Select {
     }
 }
 
-impl Query for Select {
+impl Statement for Select {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("SELECT");
@@ -59,17 +59,17 @@ impl Query for Select {
 
 #[cfg(test)]
 mod tests {
-    use query::{Select, Query};
+    use statement::{Select, Statement};
 
     #[test]
     fn compile_all() {
-        let query = Select::new().table("foo");
-        assert_eq!(&query.compile().unwrap(), "SELECT * FROM `foo`");
+        let statement = Select::new().table("foo");
+        assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo`");
     }
 
     #[test]
     fn compile_subset() {
-        let query = Select::new().table("foo").column("bar").column("baz");
-        assert_eq!(&query.compile().unwrap(), "SELECT `bar`, `baz` FROM `foo`");
+        let statement = Select::new().table("foo").column("bar").column("baz");
+        assert_eq!(&statement.compile().unwrap(), "SELECT `bar`, `baz` FROM `foo`");
     }
 }

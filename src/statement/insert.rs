@@ -1,9 +1,9 @@
 use std::default::Default;
 
 use Result;
-use query::{Buffer, Query};
+use statement::{Buffer, Statement};
 
-/// An `INSERT` query.
+/// An `INSERT` statement.
 #[derive(Clone, Debug, Default)]
 pub struct Insert {
     columns: Option<Vec<String>>,
@@ -12,7 +12,7 @@ pub struct Insert {
 }
 
 impl Insert {
-    /// Create a query.
+    /// Create a statement.
     #[inline]
     pub fn new() -> Insert {
         Default::default()
@@ -26,7 +26,7 @@ impl Insert {
         self
     }
 
-    /// Extend the query for inserting multiple rows at once.
+    /// Extend the statement for inserting multiple rows at once.
     pub fn multiplex(mut self, value: usize) -> Self {
         self.multiplex = Some(value);
         self
@@ -39,7 +39,7 @@ impl Insert {
     }
 }
 
-impl Query for Insert {
+impl Statement for Insert {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("INSERT INTO");
@@ -74,13 +74,13 @@ impl Query for Insert {
 
 #[cfg(test)]
 mod tests {
-    use query::{Insert, Query};
+    use statement::{Insert, Statement};
 
     #[test]
     fn compile() {
-        let query = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
+        let statement = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
 
-        assert_eq!(&query.compile().unwrap(),
+        assert_eq!(&statement.compile().unwrap(),
                    "INSERT INTO `foo` (`bar`, `baz`) VALUES (?, ?), (?, ?), (?, ?)");
     }
 }

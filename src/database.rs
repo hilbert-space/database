@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use driver::Driver;
-use query::Query;
+use statement::Statement;
 use {Result, Safe};
 
 /// A database.
@@ -17,15 +17,15 @@ impl<T: Driver> Database<T> {
         Ok(Database { driver: Safe::new(try!(T::connect(path))) })
     }
 
-    /// Execute a query.
+    /// Execute a statement.
     #[inline]
-    pub fn execute<Q: Query>(&self, query: Q) -> Result<()> {
-        self.driver.execute(try!(query.compile()))
+    pub fn execute<S: Statement>(&self, statement: S) -> Result<()> {
+        self.driver.execute(try!(statement.compile()))
     }
 
     /// Prepare a statement.
     #[inline]
-    pub fn prepare<Q: Query>(&self, query: Q) -> Result<T::Statement> {
-        self.driver.prepare(try!(query.compile()))
+    pub fn prepare<S: Statement>(&self, statement: S) -> Result<T::Statement> {
+        self.driver.prepare(try!(statement.compile()))
     }
 }

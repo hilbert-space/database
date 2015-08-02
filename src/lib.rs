@@ -7,18 +7,18 @@
 //!
 //! let database: Database<SQLite> = Database::open(":memory:").unwrap();
 //!
-//! let query = CreateTable::new()
-//!                         .name("foo")
-//!                         .column(|column| column.name("bar").kind(Type::Float))
-//!                         .column(|column| column.name("baz").kind(Type::Integer));
-//! database.execute(query).unwrap();
+//! let statement = CreateTable::new()
+//!                             .name("foo")
+//!                             .column(|column| column.name("bar").kind(Type::Float))
+//!                             .column(|column| column.name("baz").kind(Type::Integer));
+//! database.execute(statement).unwrap();
 //!
-//! let query = Insert::new().table("foo").column("bar").column("baz");
-//! let mut statement = database.prepare(query).unwrap();
+//! let statement = Insert::new().table("foo").column("bar").column("baz");
+//! let mut statement = database.prepare(statement).unwrap();
 //! statement.execute(&[Value::Float(42.0), Value::Integer(69)]).unwrap();
 //!
-//! let query = Select::new().table("foo");
-//! let mut statement = database.prepare(query).unwrap();
+//! let statement = Select::new().table("foo");
+//! let mut statement = database.prepare(statement).unwrap();
 //! statement.execute(&[]).unwrap();
 //!
 //! while let Some(record) = statement.next().unwrap() {
@@ -131,7 +131,7 @@ impl<T: Driver> Deref for Safe<T> {
 
 pub mod driver;
 pub mod prelude;
-pub mod query;
+pub mod statement;
 
 mod database;
 

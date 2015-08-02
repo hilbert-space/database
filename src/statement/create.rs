@@ -1,16 +1,16 @@
 use std::default::Default;
 
-use query::{Buffer, Query};
+use statement::{Buffer, Statement};
 use {Result, Type};
 
-/// A part of a `CREATE TABLE` query.
+/// A part of a `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
 pub struct CreateColumn {
     name: Option<String>,
     kind: Option<Type>,
 }
 
-/// A `CREATE TABLE` query.
+/// A `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
 pub struct CreateTable {
     columns: Option<Vec<CreateColumn>>,
@@ -32,7 +32,7 @@ impl CreateColumn {
     }
 }
 
-impl Query for CreateColumn {
+impl Statement for CreateColumn {
     fn compile(mut self) -> Result<String> {
         let kind = match take!(self, kind) {
             Type::Binary => "BLOB",
@@ -45,7 +45,7 @@ impl Query for CreateColumn {
 }
 
 impl CreateTable {
-    /// Create a query.
+    /// Create a statement.
     #[inline]
     pub fn new() -> CreateTable {
         Default::default()
@@ -72,7 +72,7 @@ impl CreateTable {
     }
 }
 
-impl Query for CreateTable {
+impl Statement for CreateTable {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("CREATE TABLE");
@@ -96,15 +96,16 @@ impl Query for CreateTable {
 #[cfg(test)]
 mod tests {
     use Type;
-    use query::{CreateTable, Query};
+    use statement::{CreateTable, Statement};
 
     #[test]
     fn compile() {
-        let query = CreateTable::new().name("foo").if_not_exists()
-                                .column(|column| column.name("bar").kind(Type::Float))
-                                .column(|column| column.name("baz").kind(Type::String));
+        let statement = CreateTable::new().name("foo")
+                                          .if_not_exists()
+                                          .column(|column| column.name("bar").kind(Type::Float))
+                                          .column(|column| column.name("baz").kind(Type::String));
 
-        assert_eq!(&query.compile().unwrap(),
+        assert_eq!(&statement.compile().unwrap(),
                    "CREATE TABLE IF NOT EXISTS `foo` (`bar` REAL, `baz` TEXT)");
     }
 }
