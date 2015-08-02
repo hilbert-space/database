@@ -7,6 +7,7 @@ use statement::{Buffer, Statement};
 #[derive(Clone, Debug, Default)]
 pub struct Select {
     columns: Option<Vec<String>>,
+    limit: Option<usize>,
     table: Option<String>,
 }
 
@@ -22,6 +23,12 @@ impl Select {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
         columns.push(value.to_string());
         self.columns = Some(columns);
+        self
+    }
+
+    /// Add a limit.
+    pub fn limit(mut self, value: usize) -> Self {
+        self.limit = Some(value);
         self
     }
 
@@ -53,6 +60,9 @@ impl Statement for Select {
         }
         buffer.push("FROM");
         buffer.push(format!("`{}`", take!(self, table)));
+        if let Some(limit) = self.limit.take() {
+            buffer.push(format!("LIMIT {}", limit));
+        }
         Ok(buffer.join(" "))
     }
 }
@@ -65,6 +75,12 @@ mod tests {
     fn compile_all() {
         let statement = Select::new().table("foo");
         assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo`");
+    }
+
+    #[test]
+    fn compile_limit() {
+        let statement = Select::new().table("foo").limit(10);
+        assert_eq!(&statement.compile().unwrap(), "SELECT * FROM `foo` LIMIT 10");
     }
 
     #[test]
