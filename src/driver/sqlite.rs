@@ -1,3 +1,5 @@
+//! The SQLite driver.
+
 use sqlite;
 use std::marker::PhantomData;
 use std::mem;
@@ -7,7 +9,7 @@ use Result;
 use column::Value;
 use driver;
 
-/// An SQLite driver.
+/// The SQLite driver.
 pub struct Driver<'l> {
     backend: sqlite::Connection,
     phantom: PhantomData<&'l ()>,

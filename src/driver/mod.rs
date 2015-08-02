@@ -1,4 +1,4 @@
-//! Database drivers.
+//! Drivers.
 
 use std::ops::Index;
 use std::path::Path;

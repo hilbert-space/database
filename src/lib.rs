@@ -83,5 +83,4 @@ pub mod query;
 
 mod database;
 
-pub use column::Column;
 pub use database::Database;
