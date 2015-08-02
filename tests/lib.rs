@@ -1,9 +1,8 @@
 extern crate database;
 
-use database::Database;
-use database::column::{Type, Value};
 use database::driver::{SQLite, Statement};
 use database::query::{CreateTable, Insert, Select};
+use database::{Database, Type, Value};
 
 #[test]
 fn workflow() {

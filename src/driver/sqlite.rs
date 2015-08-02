@@ -5,9 +5,8 @@ use std::marker::PhantomData;
 use std::mem;
 use std::path::Path;
 
-use Result;
-use column::Value;
 use driver;
+use {Result, Value};
 
 /// The SQLite driver.
 pub struct Driver<'l> {

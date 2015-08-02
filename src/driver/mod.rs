@@ -3,8 +3,7 @@
 use std::ops::Index;
 use std::path::Path;
 
-use Result;
-use column::Value;
+use {Result, Value};
 
 /// A driver.
 pub trait Driver {

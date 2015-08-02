@@ -1,8 +1,7 @@
 use std::default::Default;
 
-use Result;
-use column::Type;
 use query::{Buffer, Query};
+use {Result, Type};
 
 /// A part of a `CREATE TABLE` query.
 #[derive(Clone, Debug, Default)]
@@ -96,7 +95,7 @@ impl Query for CreateTable {
 
 #[cfg(test)]
 mod tests {
-    use column::Type;
+    use Type;
     use query::{CreateTable, Query};
 
     #[test]
