@@ -13,8 +13,12 @@ let database: Database<SQLite> = Database::open(":memory:").unwrap();
 
 let statement = CreateTable::new()
                             .name("foo")
-                            .column(|column| column.name("bar").kind(Type::Float))
-                            .column(|column| column.name("baz").kind(Type::Integer));
+                            .column(|column| {
+                                column.name("bar").kind(Type::Float)
+                            })
+                            .column(|column| {
+                                column.name("baz").kind(Type::Integer)
+                            });
 database.execute(statement).unwrap();
 
 let statement = Insert::new().table("foo").column("bar").column("baz");
