@@ -19,7 +19,7 @@ mod create_table;
 mod insert_into;
 mod select;
 
-pub use self::create_table::{Column, CreateTable};
+pub use self::create_table::CreateTable;
 pub use self::insert_into::InsertInto;
 pub use self::select::Select;
 

@@ -6,4 +6,5 @@ pub use Value;
 
 pub use driver::*;
 pub use language::*;
+pub use language::description::*;
 pub use language::statement::*;

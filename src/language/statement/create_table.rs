@@ -1,15 +1,9 @@
 use std::default::Default;
 
+use Result;
 use language::Buffer;
+use language::description::{Column, Description};
 use language::statement::Statement;
-use {Result, Type};
-
-/// A column description.
-#[derive(Clone, Debug, Default)]
-pub struct Column {
-    name: Option<String>,
-    kind: Option<Type>,
-}
 
 /// A `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
@@ -17,32 +11,6 @@ pub struct CreateTable {
     columns: Option<Vec<Column>>,
     if_not_exists: Option<()>,
     name: Option<String>,
-}
-
-impl Column {
-    /// Set the name.
-    pub fn name<T: ToString>(mut self, value: T) -> Self {
-        self.name = Some(value.to_string());
-        self
-    }
-
-    /// Set the type.
-    pub fn kind(mut self, value: Type) -> Self {
-        self.kind = Some(value);
-        self
-    }
-}
-
-impl Statement for Column {
-    fn compile(mut self) -> Result<String> {
-        let kind = match take!(self, kind) {
-            Type::Binary => "BLOB",
-            Type::Float => "REAL",
-            Type::Integer => "INTEGER",
-            Type::String => "TEXT",
-        };
-        Ok(format!("`{}` {}", take!(self, name), kind))
-    }
 }
 
 impl CreateTable {
