@@ -14,7 +14,6 @@ pub struct Column {
 
 impl Column {
     /// Create a definition.
-    #[inline]
     pub fn new() -> Column {
         Default::default()
     }
@@ -51,7 +50,6 @@ impl Expression for Column {
 }
 
 impl operation::Like for Column {
-    #[inline]
     fn like<A: ToString>(self, value: A) -> expression::Like<Self> {
         expression::Like(self, value.to_string())
     }

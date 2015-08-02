@@ -14,7 +14,6 @@ pub struct InsertInto {
 
 impl InsertInto {
     /// Create a statement.
-    #[inline]
     pub fn new() -> Self {
         Default::default()
     }

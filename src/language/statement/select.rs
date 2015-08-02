@@ -16,7 +16,6 @@ pub struct Select {
 
 impl Select {
     /// Create a statement.
-    #[inline]
     pub fn new() -> Select {
         Default::default()
     }

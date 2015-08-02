@@ -85,21 +85,18 @@ macro_rules! ok(
 );
 
 impl fmt::Debug for Error {
-    #[inline]
     fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
         self.0.fmt(formatter)
     }
 }
 
 impl fmt::Display for Error {
-    #[inline]
     fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
         self.0.fmt(formatter)
     }
 }
 
 impl error::Error for Error {
-    #[inline]
     fn description(&self) -> &str {
         &self.0
     }

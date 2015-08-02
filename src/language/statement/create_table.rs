@@ -15,7 +15,6 @@ pub struct CreateTable {
 
 impl CreateTable {
     /// Create a statement.
-    #[inline]
     pub fn new() -> Self {
         Default::default()
     }
