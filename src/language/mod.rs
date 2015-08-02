@@ -52,16 +52,19 @@ pub fn column() -> definition::Column {
 }
 
 /// Create a `CREATE TABLE` statement.
+#[inline]
 pub fn create_table() -> statement::CreateTable {
     Default::default()
 }
 
 /// Create an `INSERT INTO` statement.
+#[inline]
 pub fn insert_into() -> statement::InsertInto {
     Default::default()
 }
 
 /// Create a `SELECT` statement.
+#[inline]
 pub fn select() -> statement::Select {
     Default::default()
 }
