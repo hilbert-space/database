@@ -42,8 +42,7 @@ pub struct Error(String);
 /// A result.
 pub type Result<T> = result::Result<T, Error>;
 
-#[doc(hidden)]
-pub struct Safe<T: Driver>(Rc<T>);
+struct Safe<T: Driver>(Rc<T>);
 
 /// A column type.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
