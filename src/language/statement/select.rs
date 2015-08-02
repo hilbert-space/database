@@ -1,8 +1,8 @@
 use std::default::Default;
 
 use Result;
-use language::Buffer;
 use language::statement::Statement;
+use language::{Buffer, Unit};
 
 /// A `SELECT` statement.
 #[derive(Clone, Debug, Default)]
@@ -41,6 +41,9 @@ impl Select {
 }
 
 impl Statement for Select {
+}
+
+impl Unit for Select {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("SELECT");

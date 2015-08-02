@@ -1,6 +1,14 @@
 //! Structured query language.
 
+use Result;
+
 struct Buffer(Vec<String>);
+
+/// A language unit.
+pub trait Unit {
+    /// Compile the unit.
+    fn compile(self) -> Result<String>;
+}
 
 impl Buffer {
     fn new() -> Buffer {
@@ -26,6 +34,13 @@ impl Buffer {
     #[inline]
     fn len(&self) -> usize {
         self.0.len()
+    }
+}
+
+impl<T: ToString> Unit for T {
+    #[inline]
+    fn compile(self) -> Result<String> {
+        Ok(self.to_string())
     }
 }
 

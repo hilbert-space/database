@@ -1,18 +1,9 @@
 //! Statements.
 
-use Result;
+use language::Unit;
 
 /// A statement.
-pub trait Statement {
-    /// Compile the statement.
-    fn compile(self) -> Result<String>;
-}
-
-impl<T: ToString> Statement for T {
-    #[inline]
-    fn compile(self) -> Result<String> {
-        Ok(self.to_string())
-    }
+pub trait Statement: Unit {
 }
 
 mod create_table;

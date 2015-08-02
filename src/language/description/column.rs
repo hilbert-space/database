@@ -1,5 +1,6 @@
 use std::default::Default;
 
+use language::Unit;
 use language::description::Description;
 use {Result, Type};
 
@@ -31,6 +32,9 @@ impl Column {
 }
 
 impl Description for Column {
+}
+
+impl Unit for Column {
     fn compile(mut self) -> Result<String> {
         let kind = match take!(self, kind) {
             Type::Binary => "BLOB",

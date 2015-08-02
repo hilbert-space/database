@@ -1,8 +1,8 @@
 use std::default::Default;
 
 use Result;
-use language::Buffer;
 use language::statement::Statement;
+use language::{Buffer, Unit};
 
 /// An `INSERT INTO` statement.
 #[derive(Clone, Debug, Default)]
@@ -41,6 +41,9 @@ impl InsertInto {
 }
 
 impl Statement for InsertInto {
+}
+
+impl Unit for InsertInto {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("INSERT INTO");

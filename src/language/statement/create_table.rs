@@ -1,9 +1,9 @@
 use std::default::Default;
 
 use Result;
-use language::Buffer;
-use language::description::{Column, Description};
+use language::description::Column;
 use language::statement::Statement;
+use language::{Buffer, Unit};
 
 /// A `CREATE TABLE` statement.
 #[derive(Clone, Debug, Default)]
@@ -42,6 +42,9 @@ impl CreateTable {
 }
 
 impl Statement for CreateTable {
+}
+
+impl Unit for CreateTable {
     fn compile(mut self) -> Result<String> {
         let mut buffer = Buffer::new();
         buffer.push("CREATE TABLE");

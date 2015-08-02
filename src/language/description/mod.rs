@@ -1,18 +1,9 @@
 //! Descriptions.
 
-use Result;
+use language::Unit;
 
 /// A description.
-pub trait Description {
-    /// Compile the description.
-    fn compile(self) -> Result<String>;
-}
-
-impl<T: ToString> Description for T {
-    #[inline]
-    fn compile(self) -> Result<String> {
-        Ok(self.to_string())
-    }
+pub trait Description: Unit {
 }
 
 mod column;
