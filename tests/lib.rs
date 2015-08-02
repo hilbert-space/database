@@ -8,21 +8,20 @@ use database::{Database, Type, Value};
 fn workflow() {
     let database: Database<SQLite> = Database::open(":memory:").unwrap();
 
-    let query = CreateTable::new().name("foo").if_not_exists()
+    let query = CreateTable::new().name("foo")
+                                  .if_not_exists()
                                   .column(|column| column.name("bar").kind(Type::Float))
                                   .column(|column| column.name("baz").kind(Type::Integer));
     database.execute(query).unwrap();
 
     let query = Insert::new().table("foo").column("bar").column("baz").multiplex(3);
     let mut statement = database.prepare(query).unwrap();
-
     statement.execute(&[Value::Float(42.0), Value::Integer(69),
                         Value::Float(43.0), Value::Integer(70),
                         Value::Float(44.0), Value::Integer(71)]).unwrap();
 
     let query = Select::new().table("foo");
     let mut statement = database.prepare(query).unwrap();
-
     statement.execute(&[]).unwrap();
 
     let mut i = 0;
