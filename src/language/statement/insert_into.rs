@@ -1,5 +1,3 @@
-use std::default::Default;
-
 use Result;
 use language::Buffer;
 use language::statement::Statement;
@@ -13,11 +11,6 @@ pub struct InsertInto {
 }
 
 impl InsertInto {
-    /// Create a statement.
-    pub fn new() -> Self {
-        Default::default()
-    }
-
     /// Add a column.
     pub fn column<T: ToString>(mut self, value: T) -> Self {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);

@@ -1,5 +1,3 @@
-use std::default::Default;
-
 use language::definition::Definition;
 use language::expression::{self, Expression};
 use language::operation;
@@ -13,11 +11,6 @@ pub struct Column {
 }
 
 impl Column {
-    /// Create a definition.
-    pub fn new() -> Column {
-        Default::default()
-    }
-
     /// Set the name.
     pub fn name<T: ToString>(mut self, value: T) -> Self {
         self.name = Some(value.to_string());

@@ -15,14 +15,3 @@ mod select;
 pub use self::create_table::CreateTable;
 pub use self::insert_into::InsertInto;
 pub use self::select::Select;
-
-shortcut!(
-    #[doc = "Create a `CREATE TABLE` statement."]
-    create_table -> CreateTable,
-
-    #[doc = "Create an `INSERT INTO` statement."]
-    insert_into -> InsertInto,
-
-    #[doc = "Create a `SELECT` statement."]
-    select -> Select,
-);

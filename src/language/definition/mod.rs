@@ -11,8 +11,3 @@ pub trait Definition {
 mod column;
 
 pub use self::column::Column;
-
-shortcut!(
-    #[doc = "Create a column definition."]
-    column -> Column,
-);

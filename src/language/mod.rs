@@ -1,5 +1,7 @@
 //! Structured query language.
 
+use std::default::Default;
+
 struct Buffer(Vec<String>);
 
 impl Buffer {
@@ -38,19 +40,28 @@ macro_rules! some(
     );
 );
 
-macro_rules! shortcut(
-    ($(#[$comment:meta] $from:ident -> $into:ident,)*) => (
-        $(
-            #[inline]
-            #[$comment]
-            pub fn $from() -> $into {
-                $into::new()
-            }
-        )*
-    );
-);
-
 pub mod definition;
 pub mod expression;
 pub mod operation;
 pub mod statement;
+
+/// Create a column definition.
+#[inline]
+pub fn column() -> definition::Column {
+    Default::default()
+}
+
+/// Create a `CREATE TABLE` statement.
+pub fn create_table() -> statement::CreateTable {
+    Default::default()
+}
+
+/// Create an `INSERT INTO` statement.
+pub fn insert_into() -> statement::InsertInto {
+    Default::default()
+}
+
+/// Create a `SELECT` statement.
+pub fn select() -> statement::Select {
+    Default::default()
+}

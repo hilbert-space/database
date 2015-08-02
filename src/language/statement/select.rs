@@ -1,5 +1,3 @@
-use std::default::Default;
-
 use Result;
 use language::Buffer;
 use language::expression::Expression;
@@ -15,11 +13,6 @@ pub struct Select {
 }
 
 impl Select {
-    /// Create a statement.
-    pub fn new() -> Select {
-        Default::default()
-    }
-
     /// Add a column.
     pub fn column<T: ToString>(mut self, value: T) -> Self {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);

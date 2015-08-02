@@ -1,5 +1,3 @@
-use std::default::Default;
-
 use Result;
 use language::Buffer;
 use language::definition::{Definition, Column};
@@ -14,11 +12,6 @@ pub struct CreateTable {
 }
 
 impl CreateTable {
-    /// Create a statement.
-    pub fn new() -> Self {
-        Default::default()
-    }
-
     /// Add a column.
     pub fn column(mut self, column: Column) -> Self {
         let mut columns = self.columns.take().unwrap_or_else(|| vec![]);
