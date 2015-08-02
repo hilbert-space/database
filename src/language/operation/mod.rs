@@ -3,7 +3,7 @@
 use language::expression;
 
 /// A `LIKE` operation.
-pub trait Like<Output=Self> {
+pub trait Like {
     /// Apply the operation.
-    fn like<T: ToString>(self, T) -> expression::Like<Output>;
+    fn like<T: ToString>(self, T) -> expression::Like<Self>;
 }

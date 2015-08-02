@@ -78,6 +78,7 @@ impl Statement for Select {
 
 #[cfg(test)]
 mod tests {
+    use language::statement::Statement;
     use prelude::*;
 
     #[test]

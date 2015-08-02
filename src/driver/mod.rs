@@ -33,5 +33,3 @@ pub trait Prepared {
 }
 
 pub mod sqlite;
-
-pub use self::sqlite::Driver as SQLite;

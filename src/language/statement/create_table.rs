@@ -54,6 +54,7 @@ impl Statement for CreateTable {
 
 #[cfg(test)]
 mod tests {
+    use language::statement::Statement;
     use prelude::*;
 
     #[test]
