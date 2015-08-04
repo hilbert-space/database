@@ -1,15 +1,8 @@
 [package]
 name = "database"
-version = "0.3.2"
+version = "0.5.0"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/stainless-steel/database"
-homepage = "https://github.com/stainless-steel/database"
-description = "The package provides a relational database."
-
-[features]
-default = ["sqlite"]
-
-[dependencies.sqlite]
-version = "0.17"
-optional = true
+repository = "https://github.com/hilbert-space/database"
+homepage = "https://github.com/hilbert-space/database"
+description = "Database."
